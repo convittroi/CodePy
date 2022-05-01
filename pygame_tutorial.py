@@ -2,15 +2,28 @@ import pygame
 pygame.init()
 win = pygame.display.set_mode((500,500))
 pygame.display.set_caption("Test Pygame")
-
+x=50
+y=50
+rad =5
+vel= 5
 run=True
 while run:
     pygame.time.delay(100)
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             run=False
-    pygame.draw.circle(win,(255,0,0),(50,50),20)
+    pygame.draw.circle(win,(255,0,0),(x,y),rad)
     pygame.display.update()
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        x-=vel
+    if keys[pygame.K_RIGHT]:
+        x +=vel
+    if keys[pygame.K_DOWN]:
+        y += vel
+    if keys[pygame.K_UP]:
+        y -= vel
+    win.fill((0,0,0))
 pygame.quit()
 
 
